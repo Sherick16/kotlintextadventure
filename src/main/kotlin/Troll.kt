@@ -1,3 +1,3 @@
-class Troll(name: String, hitpoints: Int, lives: Int) : Enemy(name, hitpoints, lives){
+class Troll(name: String, hitpoints: Int, lives: Int, level: Int) : Denizens(name, hitpoints, lives, level){
 
 }

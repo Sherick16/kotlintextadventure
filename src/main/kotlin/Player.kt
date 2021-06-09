@@ -1,10 +1,10 @@
-class Player(val name: String, var life: Int = 3, var level: Int = 1, var score: Int = 0) {
+class Player(name: String, hitpoints: Int, lives: Int, level: Int) : Denizens(name, hitpoints, lives, level) {
     val weapon = Weapon("Fists", 10)
     val inventory = ArrayList<Loot>()
 
 
     fun show() {
-        if (life < 1) {
+        if (lives < 1) {
             println("$name is dead!")
         } else {
             println("$name is alive!")
@@ -14,9 +14,9 @@ class Player(val name: String, var life: Int = 3, var level: Int = 1, var score:
     override fun toString(): String {
         return """
             name:  $name
-            life:  $life
+            life:  $lives
             level: $level
-            score: $score
+            hitpoints: $hitpoints
             weaponName: ${weapon.name}
             weaponDmg: ${weapon.damageInflicted}
             """
@@ -27,4 +27,11 @@ class Player(val name: String, var life: Int = 3, var level: Int = 1, var score:
         println(inventory.get(0))
         println("============================")
     }
+
+
+
+    fun runAway() : Boolean{
+        return lives < 2
+    }
+
 }
