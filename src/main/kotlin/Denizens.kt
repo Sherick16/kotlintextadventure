@@ -1,4 +1,5 @@
 open class Denizens(val name: String, var hitpoints: Int, var lives: Int, var level: Int) {
+    val weapon = Weapon("Fists", 10)
     open fun takeDamage(damage: Int) {
         val remainingHitpoints = hitpoints - damage
         if (remainingHitpoints > 0) {
@@ -13,15 +14,19 @@ open class Denizens(val name: String, var hitpoints: Int, var lives: Int, var le
                 }
             }
         }
-    open fun attack(player: Player, minDamage: Int, maxDamage: Int, attackTurns: Int) {
+//    open fun attack(player: Player, minDamage: Int, maxDamage: Int, attackTurns: Int) {
+//
+//        var numberOfAttacks = attackTurns
+//        while (numberOfAttacks != 0) {
+//            val attackDamage = (minDamage..maxDamage).random()
+//            player.takeDamage(attackDamage)
+//            println("${player.name}'s took $attackDamage points of damage!")
+//            numberOfAttacks -= 1
+//            Thread.sleep(800)
+//        }
+//    }
+    open fun attack(player: Player, enemy: Enemy, weapon: Weapon) {
 
-        var numberOfAttacks = attackTurns
-        while (numberOfAttacks != 0) {
-            val attackDamage = (minDamage..maxDamage).random()
-            player.takeDamage(attackDamage)
-            println("${player.name}'s took $attackDamage points of damage!")
-            numberOfAttacks -= 1
-            Thread.sleep(800)
-        }
+    val remainingHitpoints = player.hitpoints - enemy.weapon.damageInflicted
     }
 }

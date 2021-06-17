@@ -1,5 +1,4 @@
 class Player(name: String, hitpoints: Int, lives: Int, level: Int) : Denizens(name, hitpoints, lives, level) {
-    val weapon = Weapon("Fists", 10)
     val inventory = ArrayList<Loot>()
 
 
@@ -33,5 +32,4 @@ class Player(name: String, hitpoints: Int, lives: Int, level: Int) : Denizens(na
     fun runAway() : Boolean{
         return lives < 2
     }
-
 }
