@@ -1,24 +1,31 @@
 class Levels(val name: String, var levelCompletion: Boolean){
-    open fun level(levels: Levels) {
-        val gordonRamsay = Enemy("Gordon Ramsay", 120, 1, 3)
-        val amateurChef = Enemy("Amateur Chef Henk", 15, 1, 3)
-        val jamieOliver = Enemy("Jamie Oliver", 15, 1, 3)
-        val alainDucasse = Enemy("Alain Ducasse", 15, 1, 3)
-        val joeBastianich = Enemy("Joe Bastianich", 15, 1, 3)
+// Initialiseer alle nodige variabele die alle classes gemeen hebben
+        var username = ""
+        val player = Player("$username", 15, 1, 0)
+        var line = readLine()!!.toLowerCase()
+    val gordonRamsay = Enemy("Gordon Ramsay", 120, 1, 3)
+    val amateurChef = Enemy("Amateur Chef Henk", 15, 1, 3)
+    val jamieOliver = Enemy("Jamie Oliver", 15, 1, 3)
+    val alainDucasse = Enemy("Alain Ducasse", 15, 1, 3)
+    val joeBastianich = Enemy("Joe Bastianich", 15, 1, 3)
+
+    open fun charSelect() {
+
 
         println("Enter your character name")
-        var username = readLine()
+        username = readLine().toString()
 
-        while (username!!.isBlank()) {
+        while (username.isBlank()) {
             println("Please enter a valid character name")
-            username = readLine()
+            username = readLine().toString()
         }
 
-        val Player = Player("$username", 15, 1, 0)
-        println(Player)
+        val player = Player("$username", 15, 1, 0)
+        println(player)
         var line: String?
+    }
 
-        fun level0(){
+        fun level0() : Boolean{
             println(
                 "Welkom $username , \n" +
                         "Jij hebt ervoor gekozen om mee te doen met een kookprogramma om aan Gordon Ramsey en de jury te laten zien dat jij geweldig kan koken en bakken!\n" +
@@ -26,22 +33,24 @@ class Levels(val name: String, var levelCompletion: Boolean){
                         "Beantwoord de volgende vraag;\n" +
                         "Benoem de benodigdheden om een broodje met pindakaas te maken"
             )
-            line = readLine()!!.toLowerCase()
+
             if (line == "pindakaas" || line == "brood" || line == "mes") {
                 println("Dat is het goede antwoord je mag nu door naar het volgende level! Type in 'level1'")
-                line = readLine()
+                line = readLine().toString()
                 if (line == "level1") {
                     //Code for level1
                 }
                 println(" ")
             } else {
-                Player.takeDamage(15)
+                player.takeDamage(15)
                 println("Helaas je hebt het niet gehaald, probeer het een andere keer weer.")
                 System.exit(-1)
             }
+            return true
+
         }
 
-        fun level1() {
+        fun level1() :Boolean {
             println(
                 "Voor de volgende opdracht moet je kiezen uit een meerkeuze vraag\n" +
                         "Je hebt keuze uit 4 opties, beantwoord met: A, B, C of D\n" +
@@ -52,7 +61,7 @@ class Levels(val name: String, var levelCompletion: Boolean){
                         "D. roomboter , zout, melk, water, eieren, bakmeel"
             )
 
-            line = readLine()!!.toLowerCase()
+
             if (line == "a") {
                 println("Dat is het goede antwoord je mag nu door naar het volgende level! Type in 'level2'")
                 line = readLine()
@@ -66,9 +75,11 @@ class Levels(val name: String, var levelCompletion: Boolean){
                 println("Helaas je hebt het niet gehaald, probeer het een andere keer weer.")
                 System.exit(-1)
             }
+            return true
+
         }
 
-        fun level2() {
+        fun level2() : Boolean{
             println(
                 "De volgende opdracht bestaat weer uit een meerkeuze vraag\n" +
                         "Dit keer gaan wij kijken naar de kookinstrumenten die je nodig om het maken van een cake.\n" +
@@ -94,9 +105,10 @@ class Levels(val name: String, var levelCompletion: Boolean){
                 println("Helaas je hebt het niet gehaald, probeer het een andere keer weer.")
                 System.exit(-1)
             }
+            return true
         }
 
-        fun level3() {
+        fun level3() : Boolean{
             println(
                 "De volgende opdracht bestaat weer uit een meerkeuze vraag\n" +
                         "Dit keer gaan wij kijken naar de ingrediënten die nodig zijn voor een goed stuk biefstuk.\n" +
@@ -121,11 +133,15 @@ class Levels(val name: String, var levelCompletion: Boolean){
                 println("Helaas je hebt het niet gehaald, probeer het een andere keer weer.")
                 System.exit(-1)
             }
+            return true
         }
 
-        fun level4() {
-            println("Oh nee! Het lijkt  erop dat er iets niet goed gemaakt is bij één van de andere kandidaten waardoor de andere deelnemers en de jury op hol zijn  geslagen! \n" +
-                    "Probeer  jezelf te verdedidgen tegen andere deelnemers en de jury!")
+        fun level4() : Boolean{
+
+            println(
+                "Oh nee! Het lijkt  erop dat er iets niet goed gemaakt is bij één van de andere kandidaten waardoor de andere deelnemers en de jury op hol zijn  geslagen! \n" +
+                        "Probeer  jezelf te verdedidgen tegen andere deelnemers en de jury!"
+            )
             println("Uitleg combat; wortel, pan, ren")
 
             while (amateurChef.lives >= 1) {
@@ -147,6 +163,6 @@ class Levels(val name: String, var levelCompletion: Boolean){
                 Player.level = 4
                 println("Goed gedaan! Je hebt de tegenstander verslagen en hebt  zijn wapen overgenomen! Nu kan hiermee jezelf verdedidgen tegen de anderen")
             }
+            return true
         }
-    }
 }
