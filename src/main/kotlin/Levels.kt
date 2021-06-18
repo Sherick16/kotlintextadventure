@@ -264,35 +264,24 @@ class Levels() {
         val fists = Weapon("Fists", 1500)
         val mes = Weapon("Mes", 0)
 
-        print("Je ziet het volgende jury lid al staan!")
-        print(
-            "Je loopt op hem af, maar dan zie je dat Alain Ducasse een honkbal knuppel in zijn hand heeft! \n +" +
-                    "Waar kies je voor? 'Vuist', 'afweren', 'mini-pan' of 'rennen'?"
-        )
+        print("Je laatste tegenstander is the one and only ${gordonRamsay.name} hij staat supper kokky en dit wordt een lastige match lijkt  het!")
 
         while (gordonRamsay.lives >= 1) {
             var line = readLine()!!.toLowerCase()
-            if (line == "afweren") {
-                println("$username word geschoten in zijn borst en gaat later daardoor dood aan kanker.")
+            if (line == "vuist") {
+                println("$username heeft geprobeerd om ${gordonRamsay.name} te slaan maar dat is niet gelukt! \n"
+                    + "${gordonRamsay.name} countered met zijn eigen vuist en ook hij lijkt op One Punch Man met zijn vuist!")
                 player.takeDamage(fists)
-            } else if (line == "mini-pan") {
-                println("$username x")
-                player.takeDamage(fists)
-            } else if (line == "rennen") {
-                println("$username x")
-                player.takeDamage(fists)
-            } else if (line == "one punch man") {
-                println("$username slaat ${gordonRamsay.name} vol op zijn smoel! \n" + "Je slaat hem helemaal uit elkaar omdat je te hard sloeg!")
+            } else if (line == "One Punch Man") {
+                println("En wederom heb je ook ${gordonRamsay.name} met 1 stoot verslagen! Je bent een ware One Punch Man")
                 gordonRamsay.takeDamage(fists)
             } else {
                 println("Error, onjuiste input...")
             }
 
         }
-        println(
-            "Er is niet veel meer over van Joe en je beseft je dat je op One Punch Man lijkt! \n" +
-                    "Daarom besluit je Joe zijn moeders scheermes af te pakken die hij bij zich had en scheer je jezelf kaal!"
-        )
+        println("Nu iedereen verslagen is kan je weer rustig naar huis keren! Niet alleen heb je je kookkunsten kunnen laten zien \n"
+        +  "maar ook heb jij je vechtkracht laten zien!")
         return true
     }
 }
