@@ -1,9 +1,9 @@
 import com.sun.jdi.DoubleValue
 
 enum class LootType{
-    POTION, RING, ARMOR
+    RANDOMSTUFF, WEAPONS, ARMOR
 }
 
-class Loot(val name: String, val lootType: LootType, val value: DoubleValue){
+class Loot(val name: String, val lootType: LootType, val value: Int){
 
 }

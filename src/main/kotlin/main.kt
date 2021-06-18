@@ -6,4 +6,8 @@ fun main() {
     levels.level2()
     levels.level3()
     levels.level4()
+    levels.level5()
+    levels.level6()
+    levels.level7()
+    levels.level8()
 }

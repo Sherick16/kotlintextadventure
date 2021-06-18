@@ -1,20 +1,24 @@
-open class Denizens(val name: String, var hitpoints: Int, var lives: Int, var level: Int) {
+open class Denizens(val name: String, var hitpoints: Int, var lives: Int, var level: Int, var dead: Boolean) {
     val weapon = Weapon("Fists", 10)
-    open fun takeDamage(damage: Int) {
+    open fun takeDamage(weapon: Weapon) {
+        var damage = weapon.damageInflicted
         val remainingHitpoints = hitpoints - damage
         if (remainingHitpoints > 0) {
             hitpoints = remainingHitpoints
             println("$name took $damage points of damage and has $hitpoints left.")
+
         } else {
-            if (lives < 1) {
+            hitpoints = remainingHitpoints
+            if (lives > 1) {
                 lives -= 1
                 println("$name has lost a life")
             } else {
-                    println("$name is dead! $name has no more lives left")
-                }
+                println("$name is dead! $name has no more lives left")
             }
         }
-//    open fun attack(player: Player, minDamage: Int, maxDamage: Int, attackTurns: Int) {
+    }
+
+    //    open fun attack(player: Player, minDamage: Int, maxDamage: Int, attackTurns: Int) {
 //
 //        var numberOfAttacks = attackTurns
 //        while (numberOfAttacks != 0) {
@@ -25,8 +29,21 @@ open class Denizens(val name: String, var hitpoints: Int, var lives: Int, var le
 //            Thread.sleep(800)
 //        }
 //    }
-    open fun attack(player: Player, enemy: Enemy, weapon: Weapon) {
 
-    val remainingHitpoints = player.hitpoints - enemy.weapon.damageInflicted
+    override fun toString(): String {
+        return """
+            name:  $name
+            life:  $lives
+            level: $level
+            hitpoints: $hitpoints
+            """
+    }
+    fun penis(): String {
+        return """
+            name:  $name
+            life:  $lives
+            level: $level
+            hitpoints: $hitpoints
+            """
     }
 }
