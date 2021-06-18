@@ -3,27 +3,25 @@ class Levels(val name: String, var levelCompletion: Boolean){
         var username = ""
         val player = Player("$username", 15, 1, 0)
         var line = readLine()!!.toLowerCase()
-    val gordonRamsay = Enemy("Gordon Ramsay", 120, 1, 3)
-    val amateurChef = Enemy("Amateur Chef Henk", 15, 1, 3)
-    val jamieOliver = Enemy("Jamie Oliver", 15, 1, 3)
-    val alainDucasse = Enemy("Alain Ducasse", 15, 1, 3)
-    val joeBastianich = Enemy("Joe Bastianich", 15, 1, 3)
+        val gordonRamsay = Enemy("Gordon Ramsay", 120, 1, 3)
+        val amateurChef = Enemy("Amateur Chef Henk", 15, 1, 3)
+        val jamieOliver = Enemy("Jamie Oliver", 15, 1, 3)
+        val alainDucasse = Enemy("Alain Ducasse", 15, 1, 3)
+        val joeBastianich = Enemy("Joe Bastianich", 15, 1, 3)
 
-    open fun charSelect() {
-
-
-        println("Enter your character name")
-        username = readLine().toString()
-
-        while (username.isBlank()) {
-            println("Please enter a valid character name")
+        open fun charSelect() {
+            println("Enter your character name")
             username = readLine().toString()
-        }
 
-        val player = Player("$username", 15, 1, 0)
-        println(player)
-        var line: String?
-    }
+            while (username.isBlank()) {
+                println("Please enter a valid character name")
+                username = readLine().toString()
+            }
+
+            val player = Player("$username", 15, 1, 0)
+            println(player)
+            var line: String?
+        }
 
         fun level0() : Boolean{
             println(
@@ -47,7 +45,7 @@ class Levels(val name: String, var levelCompletion: Boolean){
                 System.exit(-1)
             }
             return true
-
+            level1()
         }
 
         fun level1() :Boolean {
@@ -64,21 +62,21 @@ class Levels(val name: String, var levelCompletion: Boolean){
 
             if (line == "a") {
                 println("Dat is het goede antwoord je mag nu door naar het volgende level! Type in 'level2'")
-                line = readLine()
+                line = readLine().toString()
                 if (line == "level2") {
                     //Code for level2
                 }
                 println(" ")
             } else {
-                Player.takeDamage(15)
+                player.takeDamage(15)
                 println("Helaas je hebt het niet gehaald, probeer het een andere keer weer.")
                 System.exit(-1)
             }
             return true
-
+            level2()
         }
 
-        fun level2() : Boolean{
+        fun level2() : Boolean {
             println(
                 "De volgende opdracht bestaat weer uit een meerkeuze vraag\n" +
                         "Dit keer gaan wij kijken naar de kookinstrumenten die je nodig om het maken van een cake.\n" +
@@ -93,17 +91,18 @@ class Levels(val name: String, var levelCompletion: Boolean){
             line = readLine()!!.toLowerCase()
             if (line == "d") {
                 println("Dat is het goede antwoord je mag nu door naar het volgende level! Type in 'level3'")
-                line = readLine()
+                line = readLine().toString()
                 if (line == "level3") {
                     //Code for level3
                 }
                 println(" ")
             } else {
-                Player.takeDamage(15)
+                player.takeDamage(15)
                 println("Helaas je hebt het niet gehaald, probeer het een andere keer weer.")
                 System.exit(-1)
             }
             return true
+            level3()
         }
 
         fun level3() : Boolean{
@@ -121,17 +120,18 @@ class Levels(val name: String, var levelCompletion: Boolean){
             line = readLine()!!.toLowerCase()
             if (line == "b") {
                 println("Dat is het goede antwoord je mag nu door naar het volgende level! Type in 'level4'")
-                line = readLine()
+                line = readLine().toString()
                 if (line == "level4") {
                     //Code for level4
                 }
 
             } else {
-                Player.takeDamage(15)
+                player.takeDamage(15)
                 println("Helaas je hebt het niet gehaald, probeer het een andere keer weer.")
                 System.exit(-1)
             }
             return true
+            level4()
         }
 
         fun level4() : Boolean{
@@ -151,10 +151,10 @@ class Levels(val name: String, var levelCompletion: Boolean){
                     }
                 } else if (line == "pan") {
                     println("$username heeft zichzelf met een pan verdedigd... Maar het is een mini-pan!")
-                    Player.takeDamage(5)
+                    player.takeDamage(5)
                 } else if (line == "ren") {
                     println("$username probeerde weg te rennen maar is in zijn rug gestoken met een wortel!")
-                    Player.takeDamage(15)
+                    player.takeDamage(15)
                 } else {
                     println("Error, onjuiste input...")
                 }
