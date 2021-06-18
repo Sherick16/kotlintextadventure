@@ -69,7 +69,6 @@ class Levels(val name: String, var levelCompletion: Boolean){
                     //Code for level2
                 }
                 println(" ")
-                Player.level = 1
             } else {
                 Player.takeDamage(15)
                 println("Helaas je hebt het niet gehaald, probeer het een andere keer weer.")
@@ -98,7 +97,6 @@ class Levels(val name: String, var levelCompletion: Boolean){
                 if (line == "level3") {
                     //Code for level3
                 }
-                Player.level = 2
                 println(" ")
             } else {
                 Player.takeDamage(15)
@@ -127,7 +125,7 @@ class Levels(val name: String, var levelCompletion: Boolean){
                 if (line == "level4") {
                     //Code for level4
                 }
-                Player.level = 3
+
             } else {
                 Player.takeDamage(15)
                 println("Helaas je hebt het niet gehaald, probeer het een andere keer weer.")
@@ -160,7 +158,6 @@ class Levels(val name: String, var levelCompletion: Boolean){
                 } else {
                     println("Error, onjuiste input...")
                 }
-                Player.level = 4
                 println("Goed gedaan! Je hebt de tegenstander verslagen en hebt  zijn wapen overgenomen! Nu kan hiermee jezelf verdedidgen tegen de anderen")
             }
             return true
