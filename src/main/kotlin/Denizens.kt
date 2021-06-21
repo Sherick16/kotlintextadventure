@@ -23,7 +23,7 @@ open class Denizens(val name: String, var hitpoints: Int, var lives: Int, var le
         println("============================")
         println("$name's Inventory:")
         for (item in inventory) {
-            println(item)
+            println("name: ${item.name} || value: ${item.value}")
         }
         println("============================")
     }
@@ -39,5 +39,4 @@ open class Denizens(val name: String, var hitpoints: Int, var lives: Int, var le
 //            Thread.sleep(800)
 //        }
 //    }
-
 }

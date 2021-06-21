@@ -2,7 +2,7 @@ class Levels() {
     // Initialiseer alle nodige variabele die alle classes gemeen hebben
     var username = ""
     val fists = Weapon("Fists", 1500)
-
+    val Nametag = Loot("nametag", LootType.RANDOMSTUFF, 1)
     fun levels(): Boolean {
         //========================================================//
         //====================CHAR SELECT=========================//
@@ -16,10 +16,12 @@ class Levels() {
         }
         val player = Player("$username", 15, 1, 0, false)
         println(player)
-
+        player.inventory.add(Nametag)
+        player.showInventory()
         //========================================================//
         //======================LEVEL 0===========================//
         //========================================================//
+        val broodjepindakaas = Loot("broodje pindakaas", LootType.RANDOMSTUFF, 1)
         println(
             "Welkom $username , \n" +
                     "Jij hebt ervoor gekozen om mee te doen met een kookprogramma om aan Gordon Ramsey en de jury te laten zien dat jij geweldig kan koken en bakken!\n" +
@@ -37,7 +39,8 @@ class Levels() {
             println("Helaas je hebt het niet gehaald, probeer het een andere keer weer.")
             System.exit(-1)
         }
-
+        player.inventory.add(broodjepindakaas)
+        player.showInventory()
         //========================================================//
         //======================LEVEL 1===========================//
         //========================================================//
@@ -56,13 +59,15 @@ class Levels() {
             println(" \n ")
         } else {
             player.takeDamage(fists)
-            println("Helaas je hebt het niet gehaald, probeer het een andere keer weer.")
+            println("Je hebt jezelf vergiftigd.")
             System.exit(-1)
+
         }
 
         //========================================================//
         //======================LEVEL 2===========================//
         //========================================================//
+        val cake = Loot("cake", LootType.RANDOMSTUFF, 1)
         println(
             "De volgende opdracht bestaat weer uit een meerkeuze vraag\n" +
                     "Dit keer gaan wij kijken naar de kookinstrumenten die je nodig om het maken van een cake.\n" +
@@ -82,11 +87,14 @@ class Levels() {
             println("Helaas je hebt het niet gehaald, probeer het een andere keer weer. \n")
             System.exit(-1)
         }
-
+        player.inventory.add(cake)
+        player.showInventory()
 
         //========================================================//
         //======================LEVEL 3===========================//
         //========================================================//
+        val biefstuk = Loot("biefstuk", LootType.RANDOMSTUFF, 1)
+
         println(
             "De volgende opdracht bestaat weer uit een meerkeuze vraag\n" +
                     "Dit keer gaan wij kijken naar de ingrediënten die nodig zijn voor een goed stuk biefstuk.\n" +
@@ -105,7 +113,10 @@ class Levels() {
             player.takeDamage(fists)
             println("Helaas je hebt het niet gehaald, probeer het een andere keer weer.")
             System.exit(-1)
+
         }
+        player.inventory.add(biefstuk)
+        player.showInventory()
 
         //========================================================//
         //======================LEVEL 4===========================//
@@ -113,7 +124,7 @@ class Levels() {
         val amateurChef = Enemy("Amateur Chef Henk", 15, 1, 4, false)
         val wortel = Weapon("Fists", 0)
         val mes = Weapon("Mes", 5)
-        val amateurMes = Loot("Amateur Mes", LootType.RANDOMSTUFF, 1)
+        val amateurMes = Loot("AmateurChef's Mes", LootType.RANDOMSTUFF, 1)
         println(
             "Oh nee! Het lijkt  erop dat er iets niet goed gemaakt is bij één van de andere kandidaten waardoor de andere deelnemers en de jury op hol zijn  geslagen! \n" +
                     "Probeer  jezelf te verdedidgen tegen andere deelnemers en de jury!\n"
@@ -146,10 +157,12 @@ class Levels() {
         }
         println("Jo wat insane! Je hebt de amateurchef in 1 klap verslagen!")
         player.inventory.add(amateurMes)
+        player.showInventory()
 
         //========================================================//
         //======================LEVEL 5===========================//
         //========================================================//
+        print(" \n ")
         val jamieOliver = Enemy("Jamie Oliver", 25, 1, 5, false)
         val michelinStar = Loot("Michelin Star", LootType.RANDOMSTUFF, 1000)
 
@@ -193,9 +206,11 @@ class Levels() {
         //========================================================//
         //======================LEVEL 6===========================//
         //========================================================//
+        print(" \n ")
         val alainDucasse = Enemy("Alain Ducasse", 15, 1, 6, false)
-        val honkbalKnupeel = Loot("Honkbal Knuppel", LootType.RANDOMSTUFF, 10)
-        val jas = Loot("Jas", LootType.RANDOMSTUFF, 2)
+        val honkbalknuppel = Loot("Honkbal Knuppel", LootType.RANDOMSTUFF, 10)
+        val jas = Loot("jas", LootType.RANDOMSTUFF, 2)
+
 
         print("Je ziet het volgende jury lid al staan!")
         print(
@@ -228,11 +243,15 @@ class Levels() {
             }
         }
         println("Je hebt als trophy zijn jas en honkbalknuppel afgepakt om te laten zien wie de échte baas is!")
+        player.inventory.add(jas)
+        player.inventory.add(honkbalknuppel)
+        player.showInventory()
         print(" \n ")
 
         //========================================================//
         //======================LEVEL 7===========================//
         //========================================================//
+        print(" \n ")
         val joeBastianich = Enemy("Joe Bastianich", 15, 1, 7, false)
         val scheerMes = Loot("Moeder Bastianich's scheermes", LootType.RANDOMSTUFF, 5000)
 
@@ -267,14 +286,16 @@ class Levels() {
             "Er is niet veel meer over van Joe en je beseft je dat je op 'One Punch Man' lijkt! \n" +
                     "Daarom besluit je Joe zijn moeders scheermes af te pakken die hij bij zich had en scheer je jezelf kaal!"
         )
-        print(" \n ")
         player.inventory.add(scheerMes)
+        player.showInventory()
+        print(" \n ")
 
         //========================================================//
         //======================LEVEL 8===========================//
         //========================================================//
+        print(" \n ")
         val gordonRamsay = Enemy("Gordon Ramsay", 120, 1, 8, false)
-
+        val woman = Loot ("Gordon's vrouw" , LootType.RANDOMSTUFF, 100000000)
         print("Je laatste tegenstander is the one and only ${gordonRamsay.name} hij staat supper kokky en dit wordt een lastige match lijkt  het!")
         print(" \n ")
 
@@ -285,7 +306,7 @@ class Levels() {
                             "${gordonRamsay.name} countered met zijn eigen vuist en ook hij lijkt op One Punch Man met zijn vuist!")
                 player.takeDamage(fists)
                 print(" \n ")
-            } else if (line == "OnePunchMan") {
+            } else if (line == "onepunchman") {
                 println("En wederom heb je ook met 1 stoot verslagen! Je bent een ware One Punch Man")
                 gordonRamsay.takeDamage(fists)
                 print(" \n ")
@@ -301,12 +322,15 @@ class Levels() {
                 println("Error, onjuiste input...")
                 print(" \n ")
             }
+            player.inventory.add(woman)
+            player.showInventory()
             print(" \n ")
         }
         println(
             "Nu iedereen verslagen is kan je weer rustig naar huis keren! Niet alleen heb je je kookkunsten kunnen laten zien \n"
                     + "maar ook heb jij je vechtkracht laten zien!"
         )
+        player.showInventory()
         print(" \n ")
         return true
     }
