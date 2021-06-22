@@ -20,7 +20,6 @@ open class Denizens(val name: String, var hitpoints: Int, var lives: Int, var le
     }
 
     fun showInventory() {
-        println("============================")
         println("$name's Inventory:")
         for (item in inventory) {
             println("name: ${item.name} || value: ${item.value}")

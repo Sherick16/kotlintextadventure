@@ -44,6 +44,7 @@ class Levels() {
         //========================================================//
         //======================LEVEL 1===========================//
         //========================================================//
+        val cake = Loot("cake", LootType.RANDOMSTUFF, 1)
         println(
             "Voor de volgende opdracht moet je kiezen uit een meerkeuze vraag\n" +
                     "Je hebt keuze uit 4 opties, beantwoord met: A, B, C of D\n" +
@@ -61,22 +62,24 @@ class Levels() {
             player.takeDamage(fists)
             println("Je hebt jezelf vergiftigd.")
             System.exit(-1)
-
         }
+
+        player.inventory.add(cake)
+        player.showInventory()
 
         //========================================================//
         //======================LEVEL 2===========================//
         //========================================================//
-        val cake = Loot("cake", LootType.RANDOMSTUFF, 1)
+        val pizza = Loot("pizza", LootType.RANDOMSTUFF, 1)
         println(
             "De volgende opdracht bestaat weer uit een meerkeuze vraag\n" +
-                    "Dit keer gaan wij kijken naar de kookinstrumenten die je nodig om het maken van een cake.\n" +
+                    "Dit keer gaan wij kijken naar de kookinstrumenten die je nodig voor het maken van een pizza.\n" +
                     "Je hebt weer keuze uit 4 opties, beantwoord met A, B, C of D.\n" +
                     "\n" +
-                    "A. mixer , eieren, kom, mes, pan, oven\n" +
-                    "B. mixer, kom, pan, zeef, oven\n" +
-                    "C. spatel, pan, mixer, pollepel, oven\n" +
-                    "D. mixer, oven, springvorm, kom\n"
+                    "A. deegroller, oven, salami, tomatensaus \n" +
+                    "B. deegroller, oven, spatel \n" +
+                    "C. deegroller, deeg, spatel \n" +
+                    "D. deegroller, oven, kom \n"
         )
         line = readLine()!!.toLowerCase()
         if (line == "d") {
@@ -87,7 +90,7 @@ class Levels() {
             println("Helaas je hebt het niet gehaald, probeer het een andere keer weer. \n")
             System.exit(-1)
         }
-        player.inventory.add(cake)
+        player.inventory.add(pizza)
         player.showInventory()
 
         //========================================================//
@@ -295,7 +298,7 @@ class Levels() {
         //========================================================//
         print(" \n ")
         val gordonRamsay = Enemy("Gordon Ramsay", 120, 1, 8, false)
-        val woman = Loot ("Gordon's vrouw" , LootType.RANDOMSTUFF, 100000000)
+        val women = Loot ("Gordon's vrouw" , LootType.RANDOMSTUFF, 100000000)
         print("Je laatste tegenstander is the one and only ${gordonRamsay.name} hij staat supper kokky en dit wordt een lastige match lijkt  het!")
         print(" \n ")
 
@@ -322,7 +325,7 @@ class Levels() {
                 println("Error, onjuiste input...")
                 print(" \n ")
             }
-            player.inventory.add(woman)
+            player.inventory.add(women)
             player.showInventory()
             print(" \n ")
         }

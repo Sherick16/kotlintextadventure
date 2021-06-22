@@ -1,6 +1,4 @@
 class Player(name: String, hitpoints: Int, lives: Int, level: Int, dead: Boolean) : Denizens(name, hitpoints, lives, level, dead) {
-
-
     fun show() {
         if (lives < 1) {
             println("$name is dead!")
