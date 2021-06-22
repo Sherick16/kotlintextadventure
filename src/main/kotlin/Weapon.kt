@@ -1,4 +1,4 @@
-class Weapon(var varName: String, var vardamageInflicted: Int) {
-    var name = varName
-    var damageInflicted = vardamageInflicted
+class Weapon(val name: String, var minDamage: Int, var maxDamage: Int) {
+
+    open val damageInflicted = (minDamage..maxDamage).random()
 }

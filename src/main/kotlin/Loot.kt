@@ -1,5 +1,3 @@
-import com.sun.jdi.DoubleValue
-
 enum class LootType{
     RANDOMSTUFF, WEAPONS, ARMOR
 }

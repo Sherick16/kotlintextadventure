@@ -1,41 +1,23 @@
-open class Denizens(val name: String, var hitpoints: Int, var lives: Int, var level: Int, var dead: Boolean) {
-    val inventory = ArrayList<Loot>()
-    val weapon = Weapon("Fists", 10)
-    open fun takeDamage(weapon: Weapon) {
-        var damage = weapon.vardamageInflicted
-        var remainingHitpoints = hitpoints - damage
-        hitpoints = remainingHitpoints
+open class Denizens(var name: String, var hitpoints: Int, var lives: Int, var level: Int, var dead: Boolean) : Colours() {
+    open fun takeDamage(damage: Int) {
+        val remainingHitpoints = hitpoints - damage
         if (remainingHitpoints > 0) {
             hitpoints = remainingHitpoints
-            println("$name took $damage points of damage and has $hitpoints left.")
+            println("$RED $name took $damage points of damage and has $hitpoints left. $RESET")
         } else {
             if (lives < 1) {
                 lives -= 1
-                println("$name has lost a life")
+                println("$RED $name has lost a life $RESET")
             } else {
-                println("$name is dead! $name has no more lives left")
                 lives -= 1
+                println("$RED $name is dead! $name has no more lives left $RESET")
             }
         }
     }
 
-    fun showInventory() {
-        println("$name's Inventory:")
-        for (item in inventory) {
-            println("name: ${item.name} || value: ${item.value}")
-        }
-        println("============================")
+    open fun attack(denizens: Denizens, minDamage: Int, maxDamage: Int) {
+        val attackDamage = (minDamage..maxDamage).random()
+        denizens.takeDamage(attackDamage)
+        Thread.sleep(1000)
     }
-
-//        open fun attack(player: Player, minDamage: Int, maxDamage: Int, attackTurns: Int) {
-//
-//        var numberOfAttacks = attackTurns
-//        while (numberOfAttacks != 0) {
-//            val attackDamage = (minDamage..maxDamage).random()
-//            player.takeDamage(attackDamage)
-//            println("${player.name}'s took $attackDamage points of damage!")
-//            numberOfAttacks -= 1
-//            Thread.sleep(800)
-//        }
-//    }
 }
