@@ -7,13 +7,22 @@ class Levels() {
         //========================================================//
         //====================CHAR SELECT=========================//
         //========================================================//
-        println("Enter your character name")
-        var username = readLine()
+        println("Enter your first name name")
+        var firstname = readLine()
 
-        while (username!!.isBlank()) {
-            println("Please enter a valid character name")
-            username = readLine()
+        while (firstname!!.isBlank()) {
+            println("Please enter a valid first name")
+            firstname = readLine()
         }
+        println("Enter your last name name")
+        var lastname = readLine()
+
+        while (lastname!!.isBlank()) {
+            println("Please enter a valid last name")
+            lastname = readLine()
+        }
+
+        var username = "$firstname $lastname"
         val player = Player("$username", 15, 1, 0, false)
         println(player)
         player.inventory.add(Nametag)
